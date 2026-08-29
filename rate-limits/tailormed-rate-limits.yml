@@ -1,0 +1,26 @@
+generated: '2026-08-29'
+method: searched
+source: https://hub.tailormed.co/dta/api-documentation
+name: TailorMed API rate limits
+description: >-
+  No rate limits are published on any publicly reachable TailorMed page. The API
+  reference that would carry them (the Implementation Hub) is login-gated, and no
+  unauthenticated response from a TailorMed host carried a rate-limit header.
+limit_count: 0
+limits: []
+headers_observed: []
+status_code_on_exhaustion: unknown
+evidence:
+- url: https://hub.tailormed.co/dta/api-documentation
+  status: 200
+  note: >-
+    Title "API Documentation | TailorMed Implementation Hub"; body gated behind an Okta
+    login, so any documented limits are not publicly readable.
+- url: https://hub.tailormed.co/api/v1/openapi.json
+  status: 401
+  note: >-
+    Response {"error":"Missing or invalid Authorization header"} carried no
+    X-RateLimit-*, RateLimit-* or Retry-After header.
+- url: https://www.tailormed.com/
+  status: 200
+  note: Marketing site; no developer documentation and no limits.

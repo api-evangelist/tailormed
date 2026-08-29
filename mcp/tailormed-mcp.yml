@@ -1,0 +1,36 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  Direct probes of /mcp and /.well-known/* on every TailorMed host, plus npm and web
+  search for a TailorMed MCP server
+name: TailorMed MCP server
+description: >-
+  TailorMed ships no Model Context Protocol server, hosted or local, and there is no
+  OpenAPI from which a candidate tool list could be derived — the API reference is
+  behind a login. No candidate tools are listed rather than inventing them from
+  marketing copy.
+status: none
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+tool_count: 0
+probes:
+- url: https://www.tailormed.com/mcp
+  status: 404
+- url: https://hub.tailormed.co/mcp
+  status: 404
+- url: https://www.tailormed.com/.well-known/ai-plugin.json
+  status: 404
+- url: https://auth.tailormed.com/.well-known/ai-plugin.json
+  status: 404
+- url: https://registry.npmjs.org/-/v1/search?text=tailormed
+  status: 200
+  note: 0 packages; no @tailormed/mcp or equivalent.
+note: >-
+  mode "none" is the honest value: nobody ships a server. No endpoint URL is guessed —
+  a guessed MCP path that happened to answer 200 would read as a verified agent surface.

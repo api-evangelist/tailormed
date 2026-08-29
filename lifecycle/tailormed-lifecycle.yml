@@ -1,0 +1,106 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://hub.tailormed.co/sitemap.xml and the publicly served page titles and version
+  footers of the TailorMed Implementation Hub (hub.tailormed.co)
+name: TailorMed API lifecycle
+description: >-
+  Versioning and release posture for TailorMed's integration surfaces. Read from the
+  public sitemap and the publicly rendered footer of the TailorMed Implementation Hub;
+  the release-note bodies themselves are login-gated and were not read.
+versioning:
+  style: path-segment version per integration program
+  observed: >-
+    Each integration program carries its own version line and its own release-note
+    series. Versions appear as URL path segments, e.g.
+    /dta/applicationAPI/v1.9.4, /dta/claims-data-api/v1.1, /hl7-fhir/v1.5.3.
+  programs:
+  - name: DTA (Data Transfer & API) — Provider
+    current_version: v1.6.9
+    published: April 2026
+    evidence: >-
+      Footer rendered publicly on every /dta/* page: "Version : DTA Provider - v1.6.9 /
+      Published : April 2026".
+  - name: Application Data API
+    versions: [v1.9, v1.9.2, v1.9.3, v1.9.4]
+    current_version: v1.9.4
+    evidence: https://hub.tailormed.co/dta/applicationAPI/v1.9.4 (HTTP 200)
+  - name: Claims Data API
+    versions: [v1.1]
+    current_version: v1.1
+    evidence: https://hub.tailormed.co/dta/claims-data-api/v1.1 (HTTP 200)
+  - name: HL7/FHIR
+    versions: ['1.3.3', '1.5', '1.5.1', '1.5.2', '1.5.3']
+    current_version: v1.5.3
+    evidence: >-
+      Footer rendered publicly on every /hl7-fhir/* page: "Version : HL7/FHIR - v1.5.3".
+  - name: SFTP data exchange
+    versions: ['2.3', '2.4', 'provider-2.5.1', 'pharmacy-2.5.3', 'pharmacy-2.5.4']
+    current_version: v2.5.1 (Provider)
+    evidence: >-
+      Footer rendered publicly on every /sftp/* page: "Version : SFTP Provider - v2.5.1".
+release_notes:
+  published: true
+  gated: true
+  index: https://hub.tailormed.co/dta/release-notes
+  note: >-
+    Dated release notes exist for every program, but each page renders a login gate
+    ("Validating your session…") and is marked "TAILORMED CONFIDENTIAL AND PROPRIETARY".
+    Only the titles and the version footer are public.
+  entries:
+  - id: v1.9.4-application
+    program: Application Data API
+    url: https://hub.tailormed.co/dta/release-notes/v1.9.4-application
+  - id: v1.9.3-application
+    program: Application Data API
+    url: https://hub.tailormed.co/dta/release-notes/v1.9.3-application
+  - id: v1.6.9-provider
+    program: DTA Provider
+    url: https://hub.tailormed.co/dta/release-notes/v1.6.9-provider
+  - id: v1.6.9-pharmacy
+    program: DTA Pharmacy
+    url: https://hub.tailormed.co/dta/release-notes/v1.6.9-pharmacy
+  - id: v1.6.6-pharmacy
+    program: DTA Pharmacy
+    url: https://hub.tailormed.co/dta/release-notes/v1.6.6-pharmacy
+  - id: v1.6.5-sync-pharmacy
+    program: DTA Pharmacy (sync)
+    url: https://hub.tailormed.co/dta/release-notes/v1.6.5-sync-pharmacy
+  - id: v1.6.3-pharmacy
+    program: DTA Pharmacy
+    url: https://hub.tailormed.co/dta/release-notes/v1.6.3-pharmacy
+  - id: v1.6.1-provider
+    program: DTA Provider
+    url: https://hub.tailormed.co/dta/release-notes/v1.6.1-provider
+  - id: '1.5.3'
+    program: HL7/FHIR
+    url: https://hub.tailormed.co/hl7-fhir/release-notes/1.5.3
+  - id: pharmacy-2.5.4
+    program: SFTP Pharmacy
+    url: https://hub.tailormed.co/sftp/release-notes/pharmacy-2.5.4
+  - id: provider-2.5.1
+    program: SFTP Provider
+    url: https://hub.tailormed.co/sftp/release-notes/provider-2.5.1
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  note: >-
+    No public deprecation or sunset policy was found. Superseded versions of the
+    Application Data API (v1.9, v1.9.2, v1.9.3) and the HL7/FHIR program (1.3.3, 1.5,
+    1.5.1, 1.5.2) remain published as their own sections rather than being removed,
+    which shows old versions stay documented — but no policy states for how long.
+sla:
+  published: false
+status_page:
+  published: false
+  probes:
+  - url: https://status.tailormed.com
+    status: '<no DNS record>'
+  - url: https://status.tailormed.co
+    status: '<no DNS record>'
+  - url: https://www.tailormed.com/status
+    status: 404
+  - url: https://tailormed.statuspage.io
+    status: 302
+    note: Redirects to https://www.atlassian.com/software/statuspage — no TailorMed page exists.

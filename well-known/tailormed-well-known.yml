@@ -1,0 +1,73 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Direct HTTPS probes of five /.well-known/ paths against each TailorMed-controlled
+  host discovered in this pass (marketing site, Okta-backed identity host, and the
+  Implementation Hub docs host). One attempt per URL; every status recorded as observed.
+name: TailorMed .well-known probe
+note: >-
+  Only auth.tailormed.com serves real .well-known documents. It is a customer-branded
+  Okta org authorization server on TailorMed's own domain (issuer
+  "https://auth.tailormed.com"), and it is the identity surface the TailorMed platform
+  SPA authenticates against (REACT_APP_OKTA_ISSUER in the shipped tenant bundle).
+  www.tailormed.com is a Webflow marketing site and answers 404 on every path.
+  hub.tailormed.co (the Docusaurus "TailorMed Implementation Hub") answers 404 on every
+  path. Okta returns 405 rather than 404 on paths it does not implement; those are
+  recorded verbatim as 405 and are NOT documents.
+hosts:
+- host: auth.tailormed.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: tailormed-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: tailormed-oauth-authorization-server.json
+  - path: /.well-known/security.txt
+    status: 405
+  - path: /.well-known/api-catalog
+    status: 405
+  - path: /.well-known/oauth-protected-resource
+    status: 405
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: www.tailormed.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+- host: hub.tailormed.co
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404

@@ -1,23 +1,187 @@
 aid: tailormed
 name: TailorMed
-description: 'TailorMed is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  TailorMed is a medication success platform that removes access, affordability and
+  adherence barriers across the patient medication journey. Its software connects
+  patients, health systems, clinics, pharmacies and life sciences companies to
+  financial assistance, copay, foundation and free-drug programs, and keeps patient,
+  prescription and program data in sync with the record of care via HL7/FHIR, a REST
+  API, or SFTP file exchange. The product line spans TailorMed Core, Connect,
+  Complete, Amplify and Alliance. TailorMed runs a versioned integration program —
+  an Application Data API, a Claims Data API, a webhook guide and an HL7/FHIR data
+  exchange — documented on a customer-only Implementation Hub; no machine-readable
+  contract is published publicly.
+image: https://cdn.prod.website-files.com/698cbb7585b4223e82472527/69e8fb0b9cc55b51bd526799_TailorMed-Share.png
 url: https://raw.githubusercontent.com/api-evangelist/tailormed/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-29'
 modified: '2026-08-29'
 tags:
 - Company
-apis: []
+- Healthcare
+- Health IT
+- Medication Access
+- Medication Affordability
+- Financial Navigation
+- Patient Assistance
+- Pharmacy
+- Oncology
+- Revenue Cycle
+- HL7
+- FHIR
+- Life Sciences
+apis:
+- name: TailorMed Application Data API
+  description: >-
+    REST API for exchanging patient, prescription, encounter and assistance-program
+    application data between a health system, clinic or pharmacy and the TailorMed
+    platform. Part of TailorMed's DTA (Data Transfer & API) program. Versioned v1.9
+    through v1.9.4. The reference is published only on the customer-only TailorMed
+    Implementation Hub, so no OpenAPI or base URL is publicly stated.
+  humanURL: https://hub.tailormed.co/dta/applicationAPI/v1.9.4
+  baseURL: null
+  tags:
+  - Medication Access
+  - Patient Assistance
+  - Health IT
+  properties:
+  - type: Documentation
+    url: https://hub.tailormed.co/dta/api-documentation
+  - type: ChangeLog
+    url: changelog/tailormed-changelog.yml
+  - type: Webhooks
+    url: asyncapi/tailormed-webhooks.yml
+- name: TailorMed Claims Data API
+  description: >-
+    REST API for submitting and reconciling claims data against TailorMed's
+    affordability and assistance workflows. Versioned v1.1. Reference published only
+    on the customer-only TailorMed Implementation Hub.
+  humanURL: https://hub.tailormed.co/dta/claims-data-api/v1.1
+  baseURL: null
+  tags:
+  - Claims
+  - Revenue Cycle
+  - Health IT
+  properties:
+  - type: Documentation
+    url: https://hub.tailormed.co/dta/api-documentation
+- name: TailorMed HL7 & FHIR Data Exchange
+  description: >-
+    TailorMed's HL7 and FHIR integration program for keeping patient, prescription and
+    program data in sync with the EHR, including an Epic MyChart integration. Its own
+    version line, currently v1.5.3, with how-it-works, implementation, data-exchange,
+    FHIR app and specifications references. All reference pages are behind the
+    Implementation Hub login.
+  humanURL: https://hub.tailormed.co/hl7-fhir/v1.5.3
+  baseURL: null
+  tags:
+  - HL7
+  - FHIR
+  - Interoperability
+  - EHR
+  properties:
+  - type: Conformance
+    url: conformance/tailormed-conformance.yml
+- name: TailorMed Platform Identity
+  description: >-
+    OpenID Connect / OAuth 2.0 authorization server for the TailorMed platform, served
+    from TailorMed's own domain (an Okta org authorization server on the custom domain
+    auth.tailormed.com, issuer https://auth.tailormed.com). This is the only TailorMed
+    API surface with a publicly verifiable machine-readable description: RFC 8414
+    authorization server metadata and OpenID Provider metadata both return HTTP 200
+    unauthenticated.
+  humanURL: https://auth.tailormed.com/.well-known/openid-configuration
+  baseURL: https://auth.tailormed.com
+  tags:
+  - Authentication
+  - OAuth
+  - OpenID Connect
+  properties:
+  - type: Authentication
+    url: authentication/tailormed-authentication.yml
+  - type: OAuthScopes
+    url: scopes/tailormed-scopes.yml
+  - type: WellKnown
+    url: well-known/tailormed-well-known.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/tailormed-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/tailormed-stock
+  url: https://www.tailormed.com
+- type: DeveloperPortal
+  url: https://hub.tailormed.co/
+- type: Documentation
+  url: https://hub.tailormed.co/docs/intro
+- type: APIReference
+  url: https://hub.tailormed.co/dta/api-documentation
+- type: Login
+  url: https://hub.tailormed.co/login
+- type: Blog
+  url: https://www.tailormed.com/news-blogs
+- type: TermsOfService
+  url: https://www.tailormed.com/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.tailormed.com/legal/privacy-notice
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tailormed---medical-journey-innovations/
+- type: WellKnown
+  url: well-known/tailormed-well-known.yml
+- type: Authentication
+  url: authentication/tailormed-authentication.yml
+- type: OAuthScopes
+  url: scopes/tailormed-scopes.yml
+- type: Conformance
+  url: conformance/tailormed-conformance.yml
+- type: Compliance
+  url: conformance/tailormed-conformance.yml
+- type: Lifecycle
+  url: lifecycle/tailormed-lifecycle.yml
+- type: ChangeLog
+  url: changelog/tailormed-changelog.yml
+- type: Conventions
+  url: conventions/tailormed-conventions.yml
+- type: Plans
+  url: plans/tailormed-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tailormed-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/tailormed-webhooks.yml
+- type: Packages
+  url: packages/tailormed-packages.yml
+- type: LLMsTxt
+  url: llms/tailormed-llms.txt
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: ''
+  detail: >-
+    TailorMed has a real, currently-versioned integration program — an Application Data
+    API (v1.9.4), a Claims Data API (v1.1), a webhook guide and an HL7/FHIR data
+    exchange (v1.5.3) — but its entire API reference lives on the customer-only
+    TailorMed Implementation Hub (hub.tailormed.co, canonical docs.tailormed.co), which
+    renders "Validating your session…" behind an Okta login and is marked "TAILORMED
+    CONFIDENTIAL AND PROPRIETARY"; no OpenAPI, AsyncAPI, GraphQL SDL, WSDL or .proto is
+    served at any public URL, so the artifacts here are built from the public sitemap,
+    public page titles, public version footers and the OAuth/OIDC discovery documents
+    at auth.tailormed.com.
+  evidence:
+  - url: https://hub.tailormed.co/dta/api-documentation
+    status: 200
+  - url: https://hub.tailormed.co/api/v1/openapi.json
+    status: 401
+  - url: https://auth.tailormed.com/.well-known/openid-configuration
+    status: 200
+  - url: https://www.tailormed.com/openapi.json
+    status: 404
+  checked: '2026-08-29'

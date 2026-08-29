@@ -1,0 +1,72 @@
+generated: '2026-08-29'
+method: searched
+source: https://hub.tailormed.co/dta/release-notes
+name: TailorMed integration release notes
+description: >-
+  TailorMed publishes dated release notes for every integration program on the
+  TailorMed Implementation Hub. The index and the individual note URLs are public; the
+  note bodies render a login gate and are marked confidential, so no entry text could
+  be captured.
+scheme: per-program semantic version, one release-note page per version
+current_version:
+  dta_provider: v1.6.9
+  application_data_api: v1.9.4
+  claims_data_api: v1.1
+  hl7_fhir: v1.5.3
+  sftp_provider: v2.5.1
+published_date_observed: April 2026
+gated: true
+gate: >-
+  Okta login on hub.tailormed.co; pages render "Validating your session…" and are
+  labelled "TAILORMED CONFIDENTIAL AND PROPRIETARY".
+indexes:
+- program: DTA (Application / Provider / Pharmacy)
+  url: https://hub.tailormed.co/dta/release-notes
+  status: 200
+- program: HL7/FHIR
+  url: https://hub.tailormed.co/hl7-fhir/release-notes
+  status: 200
+- program: SFTP
+  url: https://hub.tailormed.co/sftp/release-notes
+  status: 200
+entries:
+- version: v1.9.4
+  program: Application Data API
+  url: https://hub.tailormed.co/dta/release-notes/v1.9.4-application
+  date: null
+  breaking: unknown
+  highlights: null
+  note: Body login-gated; version and program read from the public URL and sitemap.
+- version: v1.9.3
+  program: Application Data API
+  url: https://hub.tailormed.co/dta/release-notes/v1.9.3-application
+  date: null
+  breaking: unknown
+  highlights: null
+- version: v1.6.9
+  program: DTA Provider
+  url: https://hub.tailormed.co/dta/release-notes/v1.6.9-provider
+  date: 'April 2026'
+  breaking: unknown
+  highlights: null
+  note: >-
+    Date taken from the publicly rendered footer "Version : DTA Provider - v1.6.9 /
+    Published : April 2026", not from the note body.
+- version: v1.6.9
+  program: DTA Pharmacy
+  url: https://hub.tailormed.co/dta/release-notes/v1.6.9-pharmacy
+  date: null
+  breaking: unknown
+  highlights: null
+- version: '1.5.3'
+  program: HL7/FHIR
+  url: https://hub.tailormed.co/hl7-fhir/release-notes/1.5.3
+  date: null
+  breaking: unknown
+  highlights: null
+- version: pharmacy-2.5.4
+  program: SFTP Pharmacy
+  url: https://hub.tailormed.co/sftp/release-notes/pharmacy-2.5.4
+  date: null
+  breaking: unknown
+  highlights: null

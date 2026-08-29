@@ -1,0 +1,127 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://hub.tailormed.co/sitemap.xml (public), the publicly served page titles and
+  version footers of the TailorMed Implementation Hub, the OpenID/OAuth metadata at
+  auth.tailormed.com, and https://www.tailormed.com/solutions/tailormed-core
+name: TailorMed standards conformance
+description: >-
+  Standards TailorMed's published integration surface asserts. TailorMed publishes no
+  public OpenAPI, AsyncAPI, GraphQL SDL, WSDL or .proto, so nothing here is read out of
+  a machine-readable contract. Cross-cutting OAuth/OIDC entries are read off live
+  discovery documents; the healthcare domain-standard entries are read off TailorMed's
+  own versioned documentation program, whose page titles, section structure and version
+  footers are served publicly even though the body content requires a login.
+note: >-
+  The TailorMed Implementation Hub (hub.tailormed.co, canonical docs.tailormed.co) is
+  labelled "TAILORMED CONFIDENTIAL AND PROPRIETARY" and gates its body content behind
+  an Okta login. No gated content was read or reproduced. Only the public sitemap,
+  public page titles and the publicly rendered version footer were used as evidence.
+conformance:
+- id: oauth2
+  conforms: true
+  confidence: high
+  evidence: >-
+    https://auth.tailormed.com/.well-known/oauth-authorization-server returns HTTP 200
+    RFC 8414 authorization server metadata; issuer https://auth.tailormed.com.
+- id: oidc
+  conforms: true
+  confidence: high
+  evidence: >-
+    https://auth.tailormed.com/.well-known/openid-configuration returns HTTP 200 OpenID
+    Provider metadata with jwks_uri, userinfo_endpoint and RS256 id_token signing.
+- id: pkce
+  conforms: true
+  confidence: high
+  evidence: >-
+    code_challenge_methods_supported = ["S256"] in the OpenID Provider metadata; the
+    public TailorMed platform SPA uses the authorization-code + PKCE flow with a public
+    client.
+- id: oauth2-device-grant
+  conforms: true
+  confidence: high
+  evidence: >-
+    device_authorization_endpoint https://auth.tailormed.com/oauth2/v1/device/authorize
+    and grant type urn:ietf:params:oauth:grant-type:device_code advertised in the
+    OpenID Provider metadata.
+- id: rfc9457
+  conforms: false
+  confidence: medium
+  evidence: >-
+    No application/problem+json was observed. The only unauthenticated error body seen
+    on a TailorMed API host was
+    {"error":"Missing or invalid Authorization header"} (HTTP 401,
+    application/json) from https://hub.tailormed.co/api/v1/openapi.json — a bare
+    JSON error envelope, not an RFC 9457 problem document.
+- id: hipaa
+  conforms: true
+  confidence: high
+  evidence: >-
+    "TailorMed maintains a Security Management Program (SMP) which complies with the
+    Health Insurance Portability and Accountability Act of 1996, the Health Information
+    Technology for Economic and Clinical Health Act (found in Title XIII of the
+    American Recovery and Reinvestment Act of 2009), and their associated regulations."
+    — https://www.tailormed.com/legal/privacy-notice, last updated 2026-01-06.
+- id: hitech
+  conforms: true
+  confidence: high
+  evidence: >-
+    Named alongside HIPAA in the Security Management Program statement on
+    https://www.tailormed.com/legal/privacy-notice.
+domain_standards:
+- id: fhir
+  conforms: true
+  confidence: high
+  spec_location: >-
+    https://hub.tailormed.co/hl7-fhir/v1.5.3/reference/specifications (page served
+    publicly, HTTP 200, title "HL7 & FHIR: Specifications | TailorMed Implementation
+    Hub"; body gated)
+  evidence: >-
+    TailorMed runs a dedicated, separately versioned HL7/FHIR integration program with
+    its own release-note series — v1.3.3, v1.5, v1.5.1, v1.5.2 and v1.5.3 are all
+    published sections of hub.tailormed.co, each with how-it-works, implementation,
+    reference/data-exchange, reference/fhir-app and reference/specifications pages, plus
+    a dedicated /hl7-fhir/mychart page. The publicly rendered footer on those pages
+    reads "Version : HL7/FHIR - v1.5.3". TailorMed's own product page states: "Keep
+    patient, prescription, and program data accurate and in sync — via HL7/FHIR,
+    TailorMed API, or SFTP."
+    (https://www.tailormed.com/solutions/tailormed-core)
+  note: >-
+    The FHIR resources, profiles and interaction set could not be verified: the
+    specification pages are login-gated. This entry records that TailorMed ships a
+    versioned FHIR integration, not which FHIR release or US Core profile set it
+    implements.
+- id: hl7-v2
+  conforms: true
+  confidence: medium
+  spec_location: https://hub.tailormed.co/hl7-fhir/v1.5.3
+  evidence: >-
+    The integration program is titled "HL7 & FHIR" throughout, and the marketing copy
+    names "HL7/FHIR" as a distinct data-sync channel alongside the TailorMed API and
+    SFTP. In a provider/pharmacy EHR integration context "HL7" alongside FHIR denotes
+    HL7 v2 messaging.
+  note: >-
+    Medium confidence: no message type (ADT/ORM/ORU/RDE) was observable, because the
+    reference pages are gated. Do not treat this as a verified v2 message profile.
+- id: smart-on-fhir
+  conforms: false
+  confidence: low
+  evidence: >-
+    Not publicly evidenced. The existence of /hl7-fhir/<version>/reference/fhir-app and
+    /hl7-fhir/mychart sections is consistent with an EHR-embedded (Epic MyChart) app,
+    but their content is login-gated and no SMART launch, .well-known/smart-configuration
+    or scope vocabulary was observable.
+- id: dicom
+  conforms: false
+  confidence: high
+  evidence: Not applicable to a medication-affordability workflow platform; no imaging surface.
+absent:
+- id: scim
+  note: No SCIM schema URN or /scim/v2 surface observed on any TailorMed host.
+- id: odata
+  note: No $metadata surface observed.
+- id: x12
+  note: >-
+    Not observable. TailorMed publishes a "Claims Data API" and an SFTP claims-file
+    exchange, both of which are the kind of surface an X12 837/835 flow would sit
+    behind, but every page describing them is login-gated, so no claim is made.

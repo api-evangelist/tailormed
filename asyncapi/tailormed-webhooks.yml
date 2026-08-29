@@ -1,0 +1,34 @@
+generated: '2026-08-29'
+method: searched
+source: https://hub.tailormed.co/dta/webhook-guide
+name: TailorMed webhooks
+description: >-
+  TailorMed publishes a Webhook Integration Guide as part of its DTA (Data Transfer &
+  API) documentation program. The guide exists and its URL and title are served
+  publicly; the body is behind the Implementation Hub's Okta login, so the event
+  catalogue could not be captured.
+surface:
+  type: webhooks
+  guide: https://hub.tailormed.co/dta/webhook-guide
+  status: 200
+  title: 'Webhook Integration Guide | TailorMed Implementation Hub'
+  program: DTA Provider v1.6.9 (published April 2026)
+  gated: true
+asyncapi_published: false
+asyncapi_probes:
+- url: https://hub.tailormed.co/asyncapi.yaml
+  status: 404
+- url: https://www.tailormed.com/asyncapi.yaml
+  status: 404
+events: []
+event_count: 0
+delivery:
+  transport: HTTP callback (per the guide title); mechanics not publicly documented
+  signature_scheme: unknown
+  retry_policy: unknown
+  replay: unknown
+note: >-
+  event_count 0 means "not publicly readable", not "no events". The guide is a real,
+  currently-versioned section of TailorMed's integration documentation; it is gated. No
+  event names, payloads or signatures are asserted here because none could be read
+  without credentials.

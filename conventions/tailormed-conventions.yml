@@ -1,0 +1,110 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://hub.tailormed.co/dta/api-documentation, https://hub.tailormed.co/dta/webhook-guide,
+  https://auth.tailormed.com/.well-known/openid-configuration, and live probes of
+  hub.tailormed.co/api/*
+name: TailorMed API conventions
+description: >-
+  Cross-cutting runtime semantics for the TailorMed integration surface. TailorMed
+  publishes no OpenAPI and its API reference is login-gated, so most dimensions below
+  could not be established. Everything marked `unknown` was looked for and not found
+  publicly — it is not an assertion that TailorMed lacks it.
+gate: >-
+  The TailorMed Implementation Hub (hub.tailormed.co, canonical docs.tailormed.co)
+  requires an Okta login and is marked "TAILORMED CONFIDENTIAL AND PROPRIETARY". Only
+  page titles, the sitemap and the version footer are public.
+auth:
+  style: OAuth 2.0 / OpenID Connect for platform sign-in; bearer Authorization header on API calls
+  issuer: https://auth.tailormed.com
+  evidence: >-
+    HTTP 401 {"error":"Missing or invalid Authorization header"} from every
+    https://hub.tailormed.co/api/* path probed unauthenticated.
+  see: authentication/tailormed-authentication.yml
+idempotency:
+  supported: unknown
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    No idempotency key is documented on any public page. The Application Data API
+    accepts writes (the product describes syncing patient, prescription and program
+    data and auto-populating program enrolment forms), so this is a real gap in the
+    public record rather than an N/A.
+pagination:
+  style: unknown
+  params: []
+  response_fields: []
+  note: Not documented publicly.
+field_expansion:
+  supported: unknown
+sparse_fields:
+  supported: unknown
+metadata:
+  supported: unknown
+request_id_tracing:
+  supported: unknown
+  header: null
+  note: >-
+    No request-id or correlation header was returned on any unauthenticated response
+    observed.
+versioning:
+  style: per-program path-segment version (/dta/applicationAPI/v1.9.4, /hl7-fhir/v1.5.3)
+  see: lifecycle/tailormed-lifecycle.yml
+error_envelope:
+  format: bare JSON object
+  shape: '{"error": "<message>"}'
+  rfc9457: false
+  evidence: >-
+    HTTP 401 application/json {"error":"Missing or invalid Authorization header"} from
+    https://hub.tailormed.co/api/v1/openapi.json, 2026-08-29.
+  note: >-
+    Observed on the Implementation Hub's own backend, which is the only TailorMed API
+    host that answers unauthenticated. The Application Data API and Claims Data API
+    error envelopes are not publicly observable.
+  see: null
+rate_limit_signaling:
+  headers: []
+  note: None observed. See rate-limits/tailormed-rate-limits.yml (limit_count 0).
+webhooks:
+  published: true
+  guide: https://hub.tailormed.co/dta/webhook-guide
+  note: >-
+    A "Webhook Integration Guide" is a published section of the Implementation Hub; the
+    event catalogue, delivery semantics, retry policy and signature scheme are all
+    behind the login. See asyncapi/tailormed-webhooks.yml.
+dry_run_mode:
+  supported: unknown
+  note: No sandbox or test-mode surface is publicly documented.
+reversibility:
+  grade: unknown
+  state: not-publicly-documented
+  write_surfaces:
+  - surface: Application Data API
+    url: https://hub.tailormed.co/dta/applicationAPI/v1.9.4
+    reversal_operation: unknown
+    window: null
+    note: >-
+      TailorMed's own product copy describes writing back to the record of care —
+      "Keep patient, prescription, and program data accurate and in sync" and
+      "Instantly populate any program form with live EHR data"
+      (https://www.tailormed.com/solutions/tailormed-core) — so this is a write
+      surface, not a read-only one. Whether an enrolment or application submitted
+      through it can be cancelled, withdrawn or reversed, and inside what window, is
+      not stated on any public page.
+  - surface: Claims Data API
+    url: https://hub.tailormed.co/dta/claims-data-api/v1.1
+    reversal_operation: unknown
+    window: null
+  - surface: SFTP data exchange
+    url: https://hub.tailormed.co/sftp
+    reversal_operation: unknown
+    window: null
+    note: >-
+      File-drop batch exchange. Correction/reversal semantics for a previously
+      submitted file are not publicly documented.
+  note: >-
+    NOT `na`. This is a write-capable platform that enrols patients into financial
+    assistance programs; reversibility matters here and the public record is silent.
+    No window is asserted because none is published — inventing one could cost a
+    patient real money.

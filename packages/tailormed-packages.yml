@@ -1,0 +1,51 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  Registry searches against npm, PyPI, RubyGems and crates.io; GitHub repository search;
+  and a link audit of www.tailormed.com and hub.tailormed.co
+name: TailorMed client libraries
+description: >-
+  No first-party TailorMed SDK or client library was found in any public package
+  registry, and TailorMed's public surface links to none. Integration is documented as
+  HL7/FHIR, a REST API, or SFTP file exchange — all direct, with no published wrapper.
+package_count: 0
+packages: []
+registries_checked:
+- registry: npm
+  query: tailormed
+  url: https://registry.npmjs.org/-/v1/search?text=tailormed
+  status: 200
+  results: 0
+  version: null
+  published: null
+- registry: pypi
+  query: tailormed
+  url: https://pypi.org/pypi/tailormed/json
+  status: 404
+  results: 0
+  version: null
+  published: null
+- registry: rubygems
+  query: tailormed
+  url: https://rubygems.org/api/v1/search.json?query=tailormed
+  status: 200
+  results: 0
+  version: null
+  published: null
+- registry: crates.io
+  query: tailormed
+  url: https://crates.io/api/v1/crates?q=tailormed
+  status: 200
+  results: 0
+  version: null
+  published: null
+github:
+  org: null
+  note: >-
+    No github.com/tailormed organization exists. A GitHub repository search for
+    "tailormed" returns 27 repositories, all third-party — candidate take-home
+    assignments, an unrelated academic "TailorMe" body-shape model, and a
+    "TailorMed-Tracking" repo not published by the company. None is a first-party SDK.
+note: >-
+  version/published are null for every row because there is nothing to version — the
+  packages do not exist. This is a checked absence, not an unchecked field.

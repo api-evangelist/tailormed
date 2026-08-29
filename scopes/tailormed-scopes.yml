@@ -1,0 +1,75 @@
+generated: '2026-08-29'
+method: probed
+source: https://auth.tailormed.com/.well-known/openid-configuration
+name: TailorMed OAuth 2.0 / OpenID Connect scopes
+description: >-
+  Scopes advertised by the TailorMed identity surface at auth.tailormed.com, plus the
+  scopes the shipped TailorMed platform SPA actually requests. TailorMed publishes no
+  OpenAPI and no public scopes reference page, so nothing here is derived from a spec —
+  every scope below was read off a live response or a public JavaScript bundle.
+note: >-
+  These are platform sign-in scopes. The Application Data API, Claims Data API and
+  HL7/FHIR data-exchange surfaces are documented only behind the login on
+  hub.tailormed.co, so any API-specific scope or permission model they use is not
+  publicly readable.
+scopes:
+- name: openid
+  description: OpenID Connect sign-in; returns an ID token.
+  source: scopes_supported
+- name: profile
+  description: Basic profile claims (name, given_name, family_name, preferred_username, locale, ...).
+  source: scopes_supported
+- name: email
+  description: email and email_verified claims.
+  source: scopes_supported
+- name: address
+  description: address claim.
+  source: scopes_supported
+- name: phone
+  description: phone_number claim.
+  source: scopes_supported
+- name: offline_access
+  description: Issues a refresh token.
+  source: scopes_supported
+- name: groups
+  description: Group membership claim used for platform authorization.
+  source: scopes_supported
+- name: 'tableau:views:embed'
+  description: >-
+    Custom scope requested by the TailorMed platform SPA to embed Tableau analytics
+    views inside the application.
+  source: >-
+    REACT_APP_OKTA_SCOPES in the public tenant bundle
+    /ap-search-client/0.37.1-2746777299/static/js/main.f597607c.js
+claims_supported:
+- iss
+- ver
+- sub
+- aud
+- iat
+- exp
+- jti
+- auth_time
+- amr
+- idp
+- nonce
+- name
+- nickname
+- preferred_username
+- given_name
+- middle_name
+- family_name
+- email
+- email_verified
+- profile
+- zoneinfo
+- locale
+- address
+- phone_number
+- picture
+- website
+- gender
+- birthdate
+- updated_at
+- at_hash
+- c_hash

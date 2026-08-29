@@ -1,0 +1,29 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.tailormed.com/
+name: TailorMed plans and pricing
+description: >-
+  TailorMed publishes no public pricing. There is no /pricing page: the path resolves
+  to the homepage, the marketing sitemap contains no pricing URL, and every commercial
+  path on the site terminates in a "Request a Demo" form. A pricing page does exist
+  inside the customer-only Implementation Hub (/shared/pricing) but it is login-gated.
+plan_count: 0
+public_pricing: false
+model: enterprise / contact-sales
+sales_gate: https://www.tailormed.com/request-a-demo
+plans: []
+evidence:
+- url: https://www.tailormed.com/pricing
+  status: 200
+  note: Redirects to https://www.tailormed.com/ — no pricing page exists on the marketing site.
+- url: https://www.tailormed.com/sitemap.xml
+  status: 200
+  note: 71 URLs, none of them a pricing page.
+- url: https://www.tailormed.com/request-a-demo
+  status: 200
+  note: The only commercial call to action.
+- url: https://hub.tailormed.co/shared/pricing
+  status: 200
+  note: >-
+    Title "TailorMed Implementation Hub"; body renders "Validating your session…" behind
+    an Okta login. A pricing surface exists for signed customers only.
