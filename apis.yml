@@ -96,6 +96,9 @@ apis:
   baseURL: https://auth.tailormed.com
   tags:
   - Authentication
+  - OpenID Connect
+  tags_raw:
+  - Authentication
   - OAuth
   - OpenID Connect
   properties:
