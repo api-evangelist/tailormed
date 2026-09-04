@@ -11,6 +11,22 @@ description: >-
   an Application Data API, a Claims Data API, a webhook guide and an HL7/FHIR data
   exchange — documented on a customer-only Implementation Hub; no machine-readable
   contract is published publicly.
+accessModel:
+  pricing: unknown
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Requires approval
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  generated: '2026-09-03'
+  method: derived
 image: https://cdn.prod.website-files.com/698cbb7585b4223e82472527/69e8fb0b9cc55b51bd526799_TailorMed-Share.png
 url: https://raw.githubusercontent.com/api-evangelist/tailormed/refs/heads/main/apis.yml
 x-type: company
