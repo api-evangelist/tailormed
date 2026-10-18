@@ -96,6 +96,11 @@ apis:
   - HL7
   - FHIR
   - Interoperability
+  - Electronic Health Records
+  tags_raw:
+  - HL7
+  - FHIR
+  - Interoperability
   - EHR
   properties:
   - type: Conformance
