@@ -64,5 +64,118 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-TailorMed is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/tailormed-stock
+TailorMed is a medication success platform that removes access, affordability and adherence barriers across the patient medication journey. Its software connects patients, health systems, clinics, pharmacies and life sciences companies to financial assistance, copay, foundation and free-drug programs, and keeps patient, prescription and program data in sync with the record of care via HL7/FHIR, a REST API, or SFTP file exchange. The product line spans TailorMed Core, Connect, Complete, Amplify and Alliance. TailorMed runs a versioned integration program — an Application Data API, a Claims Data API, a webhook guide and an HL7/FHIR data exchange — documented on a customer-only Implementation Hub; no machine-readable contract is published publicly.
+
+**Areas:** Company · Healthcare · Health IT · Medication Access · Medication Affordability · Financial Navigation · Patient Assistance · Pharmacy · Oncology · Revenue Cycle · HL7 · FHIR
+
+## TailorMed on APIs.io
+
+Everything profiled for TailorMed is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tailormed/](https://apis.io/providers/tailormed/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [TailorMed Application Data API](https://apis.io/apis/tailormed/tailormed-application-data-api/) — REST API for exchanging patient, prescription, encounter and assistance-program application data between a health system, clinic or pharmacy and the…
+- [TailorMed Claims Data API](https://apis.io/apis/tailormed/tailormed-claims-data-api/) — REST API for submitting and reconciling claims data against TailorMed's affordability and assistance workflows. Versioned v1.1. Reference published only on…
+- [TailorMed HL7 & FHIR Data Exchange](https://apis.io/apis/tailormed/tailormed-hl7-fhir-data-exchange/) — TailorMed's HL7 and FHIR integration program for keeping patient, prescription and program data in sync with the EHR, including an Epic MyChart integration.…
+- [TailorMed Platform Identity](https://apis.io/apis/tailormed/tailormed-platform-identity/) — OpenID Connect / OAuth 2.0 authorization server for the TailorMed platform, served from TailorMed's own domain (an Okta org authorization server on the…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Tailormed Webhooks](https://apis.io/asyncapis/tailormed/tailormed-webhooks/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Tailormed Authentication](https://apis.io/security/tailormed/tailormed-authentication/)
+- [Tailormed Domain Security](https://apis.io/security/tailormed/tailormed-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Tailormed Scopes](https://apis.io/scopes/tailormed/tailormed-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Tailormed Plans Pricing](https://apis.io/plans/tailormed/tailormed-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Tailormed Rate Limits](https://apis.io/rate-limits/tailormed/tailormed-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.tailormed.com)
+- [Documentation](https://hub.tailormed.co/docs/intro)
+- [API reference](https://hub.tailormed.co/dta/api-documentation)
+- [Blog](https://www.tailormed.com/news-blogs)
+- [Terms of service](https://www.tailormed.com/legal/terms-of-use)
+- [Privacy policy](https://www.tailormed.com/legal/privacy-notice)
+
+## API Evangelist rating
+
+**Kin Score 41.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 40.5 |
+| Access clarity | 35.5 |
+
+**Agent readiness 34.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 47.7** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tailormed/](https://apis.io/providers/tailormed/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TailorMed: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tailormed/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
